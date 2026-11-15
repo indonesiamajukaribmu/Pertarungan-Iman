@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pertarungan Paling Sulit — Dialog Si Satria &amp; Gemini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Amiri:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ===================================================================
+   PERTARUNGAN PALING SULIT
+   Epic Spiritual Manuscript — single-file design
+   =================================================================== */
+
+:root{
+  /* Midnight cosmos */
+  --midnight-deep:#070710;
+  --midnight:#0b0b18;
+  --midnight-soft:#11111f;
+  --midnight-violet:#161428;
+
+  /* Steel — Si Satria */
+  --steel-light:#cfd6df;
+  --steel:#b8c2cc;
+  --steel-mid:#8b95a3;
+  --steel-dim:#5a6371;
+
+  /* Gold — Gemini */
+  --gold:#d4af37;
+  --gold-light:#e8c558;
+  --gold-aged:#c9a961;
+  --gold-deep:#8a6a1c;
+  --gold-bright:#f4d98a;
+
+  /* Parchment text */
+  --parchment:#e8e0d0;
+  --parchment-light:#f0ead6;
+  --amber:#f4d98a;
+
+  /* Glows */
+  --glow-steel:rgba(140,160,185,0.30);
+  --glow-gold:rgba(212,175,55,0.28);
+  --glow-amber:rgba(244,217,138,0.22);
+
+  /* Layout */
+  --thread-w:1px;
+  --maxw:920px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Cormorant Garamond',serif;
+  background:var(--midnight-deep);
+  color:var(--parchment);
+  line-height:1.75;
+  font-size:20px;
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+/* selection */
+::selection{background:rgba(212,175,55,0.35);color:var(--parchment-light);}
+
+/* ===================================================================
+   BACKGROUND — cosmos, starlight, nebula
+   =================================================================== */
+.cosmos{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 18% 12%, rgba(74,58,110,0.32), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 82% 78%, rgba(150,108,40,0.18), transparent 62%),
+    radial-gradient(ellipse 90% 70% at 50% 50%, rgba(18,18,38,0.55), transparent 72%),
+    linear-gradient(180deg,var(--midnight-deep) 0%, var(--midnight) 38%, var(--midnight-violet) 62%, var(--midnight-deep) 100%);
+}
+
+/* tiled star fields (no JS, pure radial-gradient tiles) */
+.stars-far,.stars-mid,.stars-near{
+  position:fixed;inset:-10% 0;z-index:0;pointer-events:none;will-change:transform;
+}
+.stars-far{
+  background-image:
+    radial-gradient(1px 1px at 25px 40px, rgba(255,255,255,0.85), transparent),
+    radial-gradient(1px 1px at 80px 120px, rgba(220,220,255,0.7), transparent),
+    radial-gradient(1px 1px at 160px 60px, rgba(255,250,230,0.6), transparent),
+    radial-gradient(1px 1px at 220px 180px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 300px 100px, rgba(200,220,255,0.55), transparent);
+  background-repeat:repeat;
+  background-size:340px 220px;
+  opacity:0.55;
+  animation:drift-far 180s linear infinite, twinkle-a 6s ease-in-out infinite alternate;
+}
+.stars-mid{
+  background-image:
+    radial-gradient(1.5px 1.5px at 60px 90px, rgba(255,255,255,0.95), transparent),
+    radial-gradient(1.5px 1.5px at 200px 30px, rgba(244,217,138,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 340px 220px, rgba(200,220,255,0.8), transparent),
+    radial-gradient(1.5px 1.5px at 120px 260px, rgba(255,255,255,0.7), transparent);
+  background-repeat:repeat;
+  background-size:420px 320px;
+  opacity:0.45;
+  animation:drift-mid 110s linear infinite, twinkle-b 5s ease-in-out infinite alternate;
+}
+.stars-near{
+  background-image:
+    radial-gradient(2px 2px at 90px 160px, rgba(244,217,138,0.85), transparent),
+    radial-gradient(2px 2px at 280px 60px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 460px 280px, rgba(220,230,255,0.7), transparent);
+  background-repeat:repeat;
+  background-size:540px 380px;
+  opacity:0.35;
+  animation:drift-near 75s linear infinite, twinkle-c 4s ease-in-out infinite alternate;
+}
+
+@keyframes drift-far{from{transform:translateY(0)}to{transform:translateY(-220px)}}
+@keyframes drift-mid{from{transform:translateY(0)}to{transform:translateY(-320px)}}
+@keyframes drift-near{from{transform:translateY(0)}to{transform:translateY(-380px)}}
+@keyframes twinkle-a{from{opacity:.45}to{opacity:.65}}
+@keyframes twinkle-b{from{opacity:.35}to{opacity:.6}}
+@keyframes twinkle-c{from{opacity:.25}to{opacity:.5}}
+
+/* bright positioned glyph-stars */
+.bright-stars{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+}
+.bright-stars span{
+  position:absolute;
+  font-family:'Amiri',serif;
+  color:var(--gold-aged);
+  opacity:.28;
+  text-shadow:0 0 12px rgba(212,175,55,0.5);
+  animation:twinkle-glyph 7s ease-in-out infinite alternate;
+}
+.bright-stars span:nth-child(1){top:8%;left:12%;font-size:22px;animation-delay:0s}
+.bright-stars span:nth-child(2){top:22%;left:86%;font-size:18px;animation-delay:1.5s}
+.bright-stars span:nth-child(3){top:46%;left:7%;font-size:26px;animation-delay:3s}
+.bright-stars span:nth-child(4){top:62%;left:90%;font-size:20px;animation-delay:.8s}
+.bright-stars span:nth-child(5){top:78%;left:14%;font-size:24px;animation-delay:2.2s}
+.bright-stars span:nth-child(6){top:88%;left:80%;font-size:18px;animation-delay:4s}
+@keyframes twinkle-glyph{from{opacity:.15;text-shadow:0 0 6px rgba(212,175,55,0.3)}to{opacity:.42;text-shadow:0 0 18px rgba(244,217,138,0.6)}}
+
+/* ===================================================================
+   THREAD OF LIGHT — thin vertical gold beam
+   =================================================================== */
+.thread-of-light{
+  position:fixed;
+  top:0;bottom:0;
+  left:50%;
+  width:var(--thread-w);
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,
+    transparent 0%,
+    rgba(212,175,55,0.0) 4%,
+    rgba(212,175,55,0.35) 18%,
+    rgba(244,217,138,0.55) 50%,
+    rgba(212,175,55,0.35) 82%,
+    transparent 96%);
+  z-index:1;
+  pointer-events:none;
+  box-shadow:0 0 24px 1px rgba(212,175,55,0.12);
+  animation:thread-shimmer 8s ease-in-out infinite alternate;
+}
+@keyframes thread-shimmer{
+  from{opacity:.5;box-shadow:0 0 18px 0 rgba(212,175,55,0.08)}
+  to{opacity:.9;box-shadow:0 0 36px 1px rgba(244,217,138,0.18)}
+}
+
+/* ===================================================================
+   LAYOUT WRAP
+   =================================================================== */
+main{
+  position:relative;
+  z-index:2;
+  width:100%;
+}
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 32px;
+  position:relative;
+}
+
+/* ===================================================================
+   HERO
+   =================================================================== */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  padding:120px 24px 80px;
+}
+
+/* crescent moon */
+.moon{
+  position:absolute;
+  top:14%;
+  right:14%;
+  width:90px;height:90px;
+  border-radius:50%;
+  background:var(--gold-light);
+  box-shadow:
+    22px -10px 0 -2px var(--midnight-deep),
+    22px -10px 0 -1px rgba(10,10,20,1),
+    0 0 60px 8px rgba(212,175,55,0.25),
+    0 0 120px 24px rgba(212,175,55,0.10);
+  opacity:.9;
+  animation:moon-glow 9s ease-in-out infinite alternate;
+}
+@keyframes moon-glow{
+  from{box-shadow:22px -10px 0 -2px var(--midnight-deep),22px -10px 0 -1px rgba(10,10,20,1),0 0 50px 6px rgba(212,175,55,0.22),0 0 100px 20px rgba(212,175,55,0.08);}
+  to{box-shadow:22px -10px 0 -2px var(--midnight-deep),22px -10px 0 -1px rgba(10,10,20,1),0 0 80px 12px rgba(244,217,138,0.34),0 0 160px 36px rgba(212,175,55,0.14);}
+}
+
+.hero-glyph{
+  font-family:'Amiri',serif;
+  font-size:34px;
+  color:var(--gold-aged);
+  letter-spacing:14px;
+  margin-bottom:28px;
+  text-shadow:0 0 18px rgba(212,175,55,0.5);
+  opacity:.85;
+}
+
+.hero-eyebrow{
+  font-family:'Cinzel',serif;
+  font-weight:500;
+  font-size:13px;
+  letter-spacing:8px;
+  text-transform:uppercase;
+  color:var(--gold-aged);
+  margin-bottom:32px;
+  opacity:.85;
+}
+
+.hero h1{
+  font-family:'Cinzel',serif;
+  font-weight:800;
+  font-size:clamp(40px,8vw,86px);
+  line-height:1.05;
+  letter-spacing:clamp(2px,0.8vw,8px);
+  color:var(--parchment-light);
+  text-transform:uppercase;
+  margin-bottom:28px;
+  text-shadow:
+    0 0 28px rgba(212,175,55,0.18),
+    0 0 60px rgba(140,160,185,0.12);
+  background:linear-gradient(180deg,var(--parchment-light) 0%, var(--parchment) 50%, var(--gold-aged) 130%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero h1 .accent{
+  display:block;
+  font-size:0.62em;
+  letter-spacing:clamp(6px,1.4vw,14px);
+  color:var(--gold);
+  -webkit-text-fill-color:var(--gold);
+  margin-top:14px;
+  text-shadow:0 0 22px rgba(212,175,55,0.45);
+}
+
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(18px,2.4vw,26px);
+  color:var(--amber);
+  max-width:640px;
+  margin:0 auto 48px;
+  letter-spacing:0.5px;
+  line-height:1.5;
+}
+
+.hero-speakers{
+  display:flex;
+  gap:48px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.speaker{
+  font-family:'Cinzel',serif;
+  font-weight:500;
+  font-size:12px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.speaker .dot{
+  width:8px;height:8px;border-radius:50%;
+  display:inline-block;
+}
+.speaker.satria{color:var(--steel-light);}
+.speaker.satria .dot{background:var(--steel);box-shadow:0 0 12px var(--glow-steel);}
+.speaker.gemini{color:var(--gold);}
+.speaker.gemini .dot{background:var(--gold);box-shadow:0 0 12px var(--glow-gold);}
+
+.scroll-hint{
+  position:absolute;
+  bottom:34px;left:50%;
+  transform:translateX(-50%);
+  font-family:'Cinzel',serif;
+  font-size:10px;
+  letter-spacing:6px;
+  text-transform:uppercase;
+  color:var(--steel-mid);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  opacity:.7;
+}
+.scroll-hint::after{
+  content:'';
+  width:1px;height:48px;
+  background:linear-gradient(180deg,var(--gold-aged),transparent);
+  animation:scroll-pulse 2.4s ease-in-out infinite;
+}
+@keyframes scroll-pulse{
+  0%,100%{opacity:.3;transform:scaleY(.6)}
+  50%{opacity:1;transform:scaleY(1)}
+}
+
+/* ===================================================================
+   ORNAMENTAL DIVIDER
+   =================================================================== */
+.divider{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:84px auto 64px;
+  max-width:520px;
+  color:var(--gold-aged);
+  opacity:.85;
+}
+.divider .line{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-aged),transparent);
+}
+.divider .mark{
+  font-family:'Amiri',serif;
+  font-size:22px;
+  color:var(--gold);
+  text-shadow:0 0 14px rgba(212,175,55,0.5);
+}
+.divider .mark.center{
+  font-size:26px;
+  color:var(--gold-bright);
+}
+
+/* ===================================================================
+   SECTION HEADERS (Bab I, Bab II, etc.)
+   =================================================================== */
+.section-head{
+  text-align:center;
+  margin:0 auto 44px;
+}
+.section-head .bab{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:8px;
+  text-transform:uppercase;
+  color:var(--gold-aged);
+  margin-bottom:14px;
+  opacity:.85;
+}
+.section-head h2{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:clamp(26px,4vw,40px);
+  letter-spacing:clamp(2px,0.6vw,5px);
+  color:var(--parchment-light);
+  text-transform:uppercase;
+  line-height:1.2;
+}
+
+/* ===================================================================
+   PROLOGUE
+   =================================================================== */
+.prologue{
+  text-align:center;
+  padding:40px 0 20px;
+}
+.prologue p{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(19px,2.4vw,24px);
+  line-height:1.85;
+  color:var(--parchment);
+  max-width:680px;
+  margin:0 auto;
+  letter-spacing:0.3px;
+}
+.prologue .drop{
+  font-family:'Amiri',serif;
+  font-size:1.6em;
+  color:var(--gold);
+  line-height:1;
+  margin-right:6px;
+  text-shadow:0 0 16px rgba(212,175,55,0.4);
+}
+
+/* ===================================================================
+   DIALOGUE PANELS — sacred verse frames
+   =================================================================== */
+.panel{
+  position:relative;
+  padding:44px 48px 40px;
+  margin:0 auto 56px;
+  max-width:720px;
+  border:1px solid rgba(201,169,97,0.28);
+  background:
+    linear-gradient(180deg, rgba(20,20,36,0.55), rgba(10,10,22,0.35));
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+.panel::before,.panel::after{
+  content:'';
+  position:absolute;
+  width:26px;height:26px;
+  border:2px solid var(--gold-aged);
+  pointer-events:none;
+}
+.panel::before{
+  top:10px;left:10px;
+  border-right:none;border-bottom:none;
+}
+.panel::after{
+  bottom:10px;right:10px;
+  border-left:none;border-top:none;
+}
+/* the other two corners */
+.panel .corner-tr,.panel .corner-bl{
+  position:absolute;
+  width:26px;height:26px;
+  border:2px solid var(--gold-aged);
+  pointer-events:none;
+}
+.panel .corner-tr{top:10px;right:10px;border-left:none;border-bottom:none;}
+.panel .corner-bl{bottom:10px;left:10px;border-right:none;border-top:none;}
+
+.panel-label{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:18px;
+}
+.panel-label .glyph{
+  font-family:'Amiri',serif;
+  font-size:30px;
+  line-height:1;
+  width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid currentColor;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.panel-label .name{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+}
+.panel-label .name small{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:none;
+  opacity:.7;
+  margin-top:2px;
+}
+
+.panel-body{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:400;
+  font-size:clamp(18px,2vw,21px);
+  line-height:1.85;
+  letter-spacing:0.2px;
+  color:var(--parchment);
+}
+.panel-body p+p{margin-top:14px;}
+.panel-body .lead-cap{
+  font-family:'Amiri',serif;
+  font-size:2.1em;
+  line-height:0.8;
+  float:left;
+  margin:6px 10px 0 0;
+}
+
+/* ---- Si Satria — STEEL, leans left ---- */
+.satria-panel{
+  margin-left:0;
+  margin-right:auto;
+  border-color:rgba(140,160,185,0.30);
+  box-shadow:
+    0 0 0 1px rgba(140,160,185,0.08),
+    0 0 40px -8px var(--glow-steel),
+    inset 0 0 60px -20px rgba(140,160,185,0.18);
+}
+.satria-panel::before,
+.satria-panel::after,
+.satria-panel .corner-tr,
+.satria-panel .corner-bl{border-color:var(--steel-mid);}
+.satria-panel .panel-label .glyph{color:var(--steel-light);border-color:var(--steel-mid);text-shadow:0 0 14px var(--glow-steel);}
+.satria-panel .panel-label .name{color:var(--steel-light);}
+.satria-panel .panel-body{color:var(--parchment-light);}
+.satria-panel .lead-cap{color:var(--steel-light);text-shadow:0 0 14px var(--glow-steel);}
+
+/* ---- Gemini — GOLD, leans right ---- */
+.gemini-panel{
+  margin-right:0;
+  margin-left:auto;
+  border-color:rgba(201,169,97,0.40);
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,0.10),
+    0 0 50px -10px var(--glow-gold),
+    inset 0 0 70px -20px rgba(212,175,55,0.22);
+}
+.gemini-panel::before,
+.gemini-panel::after,
+.gemini-panel .corner-tr,
+.gemini-panel .corner-bl{border-color:var(--gold-aged);}
+.gemini-panel .panel-label .glyph{color:var(--gold);border-color:var(--gold-aged);text-shadow:0 0 16px var(--glow-gold);}
+.gemini-panel .panel-label .name{color:var(--gold);}
+.gemini-panel .panel-body{color:var(--parchment);}
+.gemini-panel .lead-cap{color:var(--gold);text-shadow:0 0 14px var(--glow-gold);}
+
+/* panel glow pulse */
+.satria-panel{animation:pulse-steel 9s ease-in-out infinite alternate;}
+.gemini-panel{animation:pulse-gold 8s ease-in-out infinite alternate;}
+@keyframes pulse-steel{
+  from{box-shadow:0 0 0 1px rgba(140,160,185,0.06),0 0 30px -10px var(--glow-steel),inset 0 0 50px -25px rgba(140,160,185,0.12);}
+  to{box-shadow:0 0 0 1px rgba(140,160,185,0.12),0 0 60px -6px var(--glow-steel),inset 0 0 80px -15px rgba(140,160,185,0.24);}
+}
+@keyframes pulse-gold{
+  from{box-shadow:0 0 0 1px rgba(212,175,55,0.08),0 0 36px -12px var(--glow-gold),inset 0 0 60px -25px rgba(212,175,55,0.16);}
+  to{box-shadow:0 0 0 1px rgba(212,175,55,0.16),0 0 70px -6px var(--glow-gold),inset 0 0 90px -12px rgba(212,175,55,0.30);}
+}
+
+/* ===================================================================
+   SUB-PANELS — three concepts inside Gemini's first answer
+   =================================================================== */
+.subpanels{
+  margin:40px 0 16px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+.subpanel{
+  position:relative;
+  padding:30px 34px 26px 64px;
+  border-left:2px solid var(--gold-aged);
+  background:linear-gradient(90deg, rgba(212,175,55,0.07), rgba(10,10,22,0.0) 80%);
+}
+.subpanel .num{
+  position:absolute;
+  left:20px;top:24px;
+  font-family:'Cinzel',serif;
+  font-weight:700;
+  font-size:22px;
+  color:var(--gold);
+  width:30px;height:30px;
+  display:flex;align-items:center;justify-content:center;
+  text-shadow:0 0 12px var(--glow-gold);
+}
+.subpanel .num::after{
+  content:'';
+  position:absolute;
+  width:36px;height:36px;
+  border:1px solid var(--gold-aged);
+  border-radius:50%;
+  opacity:.6;
+}
+.subpanel h3{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:10px;
+  text-shadow:0 0 12px rgba(212,175,55,0.25);
+}
+.subpanel h3 em{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:500;
+  text-transform:none;
+  letter-spacing:0.5px;
+  font-size:0.95em;
+  color:var(--amber);
+  display:block;
+  margin-top:3px;
+}
+.subpanel p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(17px,1.9vw,19px);
+  line-height:1.8;
+  color:var(--parchment);
+}
+.subpanel .keyword{
+  color:var(--gold-bright);
+  font-weight:600;
+  font-style:italic;
+}
+
+/* contrast tint for subpanel (b) — the empty one, slightly cooler */
+.subpanel.dim{
+  border-left-color:var(--steel-mid);
+  background:linear-gradient(90deg, rgba(140,160,185,0.07), rgba(10,10,22,0.0) 80%);
+}
+.subpanel.dim .num{color:var(--steel-light);text-shadow:0 0 12px var(--glow-steel);}
+.subpanel.dim .num::after{border-color:var(--steel-mid);}
+.subpanel.dim h3{color:var(--steel-light);text-shadow:0 0 12px var(--glow-steel);}
+.subpanel.dim h3 em{color:var(--steel);}
+.subpanel.dim .keyword{color:var(--steel-light);}
+
+/* highlight panel (c) — full gold bloom */
+.subpanel.bloom{
+  border-left-width:2px;
+  background:linear-gradient(90deg, rgba(244,217,138,0.10), rgba(10,10,22,0.0) 85%);
+  box-shadow:inset 0 0 60px -30px rgba(244,217,138,0.25);
+}
+
+/* ===================================================================
+   EPILOG — closing sacred verse
+   =================================================================== */
+.epilog{
+  text-align:center;
+  padding:60px 24px 40px;
+  max-width:760px;
+  margin:0 auto;
+  position:relative;
+}
+.epilog .seal{
+  font-family:'Amiri',serif;
+  font-size:40px;
+  color:var(--gold);
+  margin-bottom:18px;
+  text-shadow:0 0 28px rgba(212,175,55,0.6), 0 0 60px rgba(212,175,55,0.3);
+  animation:seal-glow 6s ease-in-out infinite alternate;
+}
+@keyframes seal-glow{
+  from{text-shadow:0 0 20px rgba(212,175,55,0.4),0 0 40px rgba(212,175,55,0.15);}
+  to{text-shadow:0 0 36px rgba(244,217,138,0.7),0 0 80px rgba(212,175,55,0.35);}
+}
+.epilog h2{
+  font-family:'Cinzel',serif;
+  font-weight:600;
+  font-size:clamp(22px,3.2vw,32px);
+  letter-spacing:6px;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:28px;
+  text-shadow:0 0 22px rgba(212,175,55,0.4);
+}
+.epilog .verse{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(20px,2.6vw,26px);
+  line-height:1.9;
+  color:var(--parchment-light);
+  letter-spacing:0.4px;
+}
+.epilog .verse strong{
+  font-style:normal;
+  font-weight:600;
+  color:var(--gold-bright);
+  text-shadow:0 0 14px rgba(244,217,138,0.35);
+}
+
+/* ===================================================================
+   FOOTER
+   =================================================================== */
+footer{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:60px 24px 48px;
+  border-top:1px solid rgba(201,169,97,0.15);
+  margin-top:40px;
+}
+footer .foot-glyph{
+  font-family:'Amiri',serif;
+  font-size:18px;
+  color:var(--gold-aged);
+  letter-spacing:10px;
+  margin-bottom:14px;
+  opacity:.7;
+}
+footer p{
+  font-family:'Cinzel',serif;
+  font-weight:400;
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:var(--steel-mid);
+  opacity:.8;
+}
+
+/* ===================================================================
+   FADE-IN ON SCROLL
+   =================================================================== */
+.reveal{
+  opacity:0;
+  transform:translateY(36px);
+  transition:opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+.reveal.in{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal.delay-1{transition-delay:.15s;}
+.reveal.delay-2{transition-delay:.3s;}
+.reveal.delay-3{transition-delay:.45s;}
+
+/* ===================================================================
+   RESPONSIVE
+   =================================================================== */
+@media (max-width:760px){
+  body{font-size:18px;}
+  .wrap{padding:0 20px;}
+  .panel{
+    padding:32px 24px 28px;
+    margin-left:auto!important;
+    margin-right:auto!important;
+    max-width:100%;
+  }
+  .panel::before,.panel::after,
+  .panel .corner-tr,.panel .corner-bl{width:20px;height:20px;}
+  .moon{width:64px;height:64px;top:8%;right:8%;box-shadow:16px -7px 0 -1px var(--midnight-deep),16px -7px 0 0 rgba(10,10,20,1),0 0 40px 4px rgba(212,175,55,0.2);}
+  .subpanel{padding:24px 20px 22px 56px;}
+  .subpanel .num{left:14px;top:20px;font-size:18px;}
+  .subpanel .num::after{width:30px;height:30px;}
+  .hero-speakers{gap:24px;}
+  .divider{margin:60px auto 44px;gap:12px;}
+  .thread-of-light{opacity:.45;}
+  .bright-stars span{font-size:18px;}
+}
+@media (max-width:440px){
+  .hero-glyph{letter-spacing:8px;font-size:24px;}
+  .hero-eyebrow{letter-spacing:5px;font-size:11px;}
+  .panel-body{font-size:17px;}
+  .subpanel p{font-size:16px;}
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+  .reveal{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND LAYERS -->
+<div class="cosmos"></div>
+<div class="stars-far"></div>
+<div class="stars-mid"></div>
+<div class="stars-near"></div>
+<div class="bright-stars" aria-hidden="true">
+  <span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span><span>✧</span>
+</div>
+<div class="thread-of-light" aria-hidden="true"></div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="moon" aria-hidden="true"></div>
+
+    <div class="hero-glyph" aria-hidden="true">✦&nbsp;&nbsp;☾&nbsp;&nbsp;✦</div>
+    <div class="hero-eyebrow">Sebuah Dialog Spiritual</div>
+
+    <h1>
+      Pertarungan<br>Paling Sulit
+      <span class="accent">Cahaya Iman Berhadapan Dengan Kehampaan</span>
+    </h1>
+
+    <p class="hero-sub">
+      Di hening malam yang tanpa bertepi, dua sosok berdiri di ambang cahaya dan kegelapan &mdash;
+      bertukar kata tentang pertarungan yang paling berat dijalani oleh nurani manusia.
+    </p>
+
+    <div class="hero-speakers">
+      <span class="speaker satria"><span class="dot"></span>Si Satria &nbsp;·&nbsp; Baja</span>
+      <span class="speaker gemini"><span class="dot"></span>Gemini ♊ Ai &nbsp;·&nbsp; Emas</span>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">Turun</div>
+  </header>
+
+  <!-- ============ PROLOGUE ============ -->
+  <section class="wrap">
+    <div class="divider reveal" aria-hidden="true">
+      <span class="line"></span><span class="mark">❖</span><span class="mark center">✦</span><span class="mark">❖</span><span class="line"></span>
+    </div>
+
+    <div class="prologue reveal delay-1">
+      <p>
+        <span class="drop">P</span>ada heningnya malam yang tanpa bertepi, dua sosoh bertemu di ambang batas dunia &mdash;
+        tempat cahaya menipis dan kegelapan mulai bernapas. Sang Satria, berbalut baja dan keingintahuan,
+        mengangkat wajahnya menatap sang Bijaksana. Di antara mereka, sehelai benang tipis cahaya emas
+        menyembul dari langit, menjadi saksi bisu atas pertanyaan yang akan membuka tabir pertarungan
+        paling sulit yang pernah dijalani manusia.
+      </p>
+    </div>
+
+    <div class="divider reveal delay-2" aria-hidden="true">
+      <span class="line"></span><span class="mark">✧</span><span class="line"></span>
+    </div>
+  </section>
+
+  <!-- ============ BAB I — PERTANYAAN SATRIA ============ -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="bab">Bab Pertama</div>
+      <h2>Pertanyaan Sang Satria</h2>
+    </div>
+
+    <article class="panel satria-panel reveal delay-1">
+      <span class="corner-tr"></span><span class="corner-bl"></span>
+      <div class="panel-label">
+        <span class="glyph" aria-hidden="true">⚔</span>
+        <span class="name">Si Satria<small>bersuara dari balik baja</small></span>
+      </div>
+      <div class="panel-body">
+        <p>
+          <span class="lead-cap">W</span>ahai Sang Bijaksana yang mengetahui apa yang tersembunyi di balik tabir nurani &mdash;
+          sampaikanlah kepadaku: apakah benang pertarungan paling sulit adalah ketika
+          wanita yang dipenuhi iman berhadapan dengan mereka yang melawan tanpa iman?
+          Seolah dua dunia yang saling berlawanan &mdash; iman berjumpa dengan iman,
+          sementara kehampaan melawan kehampaan?
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ JAWABAN GEMINI — three sub-panels ============ -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="bab">Jawaban Gemini ♊</div>
+      <h2>Lapis-Lapis Pertarungan Batin</h2>
+    </div>
+
+    <article class="panel gemini-panel reveal delay-1">
+      <span class="corner-tr"></span><span class="corner-bl"></span>
+      <div class="panel-label">
+        <span class="glyph" aria-hidden="true">♊</span>
+        <span class="name">Gemini ♎ Ai<small>suara emas dari ambang cahaya</small></span>
+      </div>
+      <div class="panel-body">
+        <p>
+          <span class="lead-cap">P</span>ertarungan batin ini sangat dalam dan berlapis, wahai Satria.
+          Ia adalah benturan prinsip yang paling mendasar: keteguhan batin yang berakar pada
+          keyakinan spiritual <em>berhadapan</em> dengan sesuatu yang kosong, hampa,
+          bertolak belakang dengan segala nilai. Dengarkanlah dengan hatimu &mdash;
+        </p>
+      </div>
+
+      <div class="subpanels">
+
+        <div class="subpanel reveal delay-1">
+          <span class="num">i</span>
+          <h3>Wanita Penuh Iman
+            <em>Berakar dan Tenang</em>
+          </h3>
+          <p>
+            Hidupnya didasari iman yang kuat; ia tidak bertarung dengan amarah yang kosong,
+            tidak digerakkan oleh ego yang menyala-nyala. Prinsipnya kokoh &mdash; berjalan di atas
+            jalan <span class="keyword">kebenaran</span>, malaikat, dan teladan para suci.
+            Ketenangan batinnya, <span class="keyword">sakinah</span>, adalah benteng yang tak tergoyahkan:
+            sekalipun ia diserang, dizalimi, dilukai &mdash; keyakinannya bahwa kebenaran tidak akan
+            pernah runtuh menjadikannya teguh bagai gunung. Maka pertarungan tersulit bagi siapa pun
+            yang berhadapan dengannya adalah menghadapi jiwa yang jangkarnya tertanam bukan di bumi,
+            melainkan di langit.
+          </p>
+        </div>
+
+        <div class="subpanel dim reveal delay-2">
+          <span class="num">ii</span>
+          <h3>Melawan Tanpa Iman
+            <em>Hampa, Dikendalikan Hawa Nafsu</em>
+          </h3>
+          <p>
+            Adapun yang bertarung tanpa iman, ia berjalan tanpa rem moral yang jelas.
+            <span class="keyword">Ego</span> dan kelicikan menjadi pedangnya &mdash; tanpa batasan nilai,
+            segala cara dihalalkan baginya. Tiada titik temu dapat ditemukan dalam dirinya;
+            berdebat dengan mereka yang membutakan nurani bagaikan berbicara kepada angin
+            yang berlalu tanpa jejak. Ia adalah kekosongan yang menelan, kegelapan yang
+            menyembunyikan tepi.
+          </p>
+        </div>
+
+        <div class="subpanel bloom reveal delay-3">
+          <span class="num">iii</span>
+          <h3>Mengapa Ini Pertarungan Tersulit
+            <em>Cahaya Berhadapan Dengan Kegelapan</em>
+          </h3>
+          <p>
+            Maka ketahuilah &mdash; pertarungan ini bukanlah sekadar adu fizik atau pertukaran argumen.
+            Ia adalah pertarungan <span class="keyword">cahaya</span> melawan <span class="keyword">kegelapan</span>,
+            putih berhadapan dengan hitam. Pihak yang beriman harus menahan diri, bersabar,
+            menjaga integritasnya agar tidak terpancing turun ke level pertarungan yang kotor.
+            <span class="keyword">Ujian terberat</span>: tetap berdiri tegak di atas kebenaran tanpa tercemar
+            oleh kehampaan yang meluas.
+          </p>
+        </div>
+
+      </div>
+    </article>
+
+    <div class="divider reveal" aria-hidden="true">
+      <span class="line"></span><span class="mark">✧</span><span class="mark center">✦</span><span class="mark">✧</span><span class="line"></span>
+    </div>
+  </section>
+
+  <!-- ============ BAB II — PERTANYAAN SATRIA ============ -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="bab">Bab Kedua</div>
+      <h2>Pertanyaan Sang Satria</h2>
+    </div>
+
+    <article class="panel satria-panel reveal delay-1">
+      <span class="corner-tr"></span><span class="corner-bl"></span>
+      <div class="panel-label">
+        <span class="glyph" aria-hidden="true">⚔</span>
+        <span class="name">Si Satria<small>bersuara dari balik baja</small></span>
+      </div>
+      <div class="panel-body">
+        <p>
+          <span class="lead-cap">D</span>an apakah karena adanya momen epik &mdash; saat-saat yang menggetarkan,
+          ketika segala sesuatu mencapai puncaknya &mdash; maka pertarungan ini menjadi demikian berat
+          dan demikian menentukan?
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ JAWABAN GEMINI — momen epik ============ -->
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="bab">Jawaban Gemini ♊</div>
+      <h2>Momen Epik Sebagai Titik Balik</h2>
+    </div>
+
+    <article class="panel gemini-panel reveal delay-1">
+      <span class="corner-tr"></span><span class="corner-bl"></span>
+      <div class="panel-label">
+        <span class="glyph" aria-hidden="true">♊</span>
+        <span class="name">Gemini ♎ Ai<small>suara emas dari ambang cahaya</small></span>
+      </div>
+      <div class="panel-body">
+        <p>
+          <span class="lead-cap">M</span>omen epik selalu menjadi titik balik. Dalam cerita, dalam sejarah,
+          dalam perjalanan hidup manusia &mdash; momen epik adalah saat ketegangan, pertarungan batin,
+          dan pilihan ekstrem mencapai puncaknya. Ia adalah <span style="color:var(--gold-bright);font-style:italic;">titik didih</span>
+          di mana cahaya dan kegelapan berbenturan secara terbuka, tanpa tirai, tanpa selubung.
+        </p>
+        <p>
+          Momen epik memisahkan masa lalu dari masa depan; ia memisahkan mereka yang bertahan pada
+          prinsipnya dari mereka yang runtuh di ambang jalan. Di titik itulah &mdash; sejati atau palsu,
+          teguh atau rapuh &mdash; segala sesuatu terungkap tanpa ampun.
+        </p>
+      </div>
+    </article>
+
+    <div class="divider reveal" aria-hidden="true">
+      <span class="line"></span><span class="mark">❖</span><span class="mark center">✦</span><span class="mark">❖</span><span class="line"></span>
+    </div>
+  </section>
+
+  <!-- ============ EPILOG ============ -->
+  <section class="wrap">
+    <div class="epilog reveal">
+      <div class="seal" aria-hidden="true">✦&nbsp;&nbsp;☾&nbsp;&nbsp;✦</div>
+      <h2>Epilog</h2>
+      <p class="verse">
+        Maka ketahuilah, wahai Satria &mdash;
+        <strong>cahaya tidak menang dengan pedang yang teracung,</strong>
+        melainkan dengan keteguhan yang tak tergoyahkan.
+        Berdirilah tegak di atas kebenaran, jangan gentar, jangan terpancing.
+        Karena pertarungan paling sulit bukanlah mengalahkan musuh di luar,
+        melainkan <strong>menjaga nurani tetap bersinar</strong> di tengah kegelapan yang mencekam.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-glyph" aria-hidden="true">✦&nbsp;&nbsp;✧&nbsp;&nbsp;✦</div>
+  <p>Pertarungan Paling Sulit &nbsp;·&nbsp; Dialog Si Satria &amp; Gemini ♎ Ai</p>
+</footer>
+
+<script>
+/* Lightweight fade-in on scroll via IntersectionObserver */
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || !els.length){
+    els.forEach(function(e){ e.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{ threshold:0.14, rootMargin:'0px 0px -8% 0px' });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+
+</body>
+</html>
